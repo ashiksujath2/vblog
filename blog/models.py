@@ -10,7 +10,7 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-class Author(models.Model):
+class Author(BaseModel):
     user = models.ForeignKey(User)
     about = models.TextField(blank=True)
 
@@ -26,6 +26,8 @@ class Author(models.Model):
 class BlogEntry(BaseModel):
     title = models.CharField(max_length=300, help_text='Title of the article')
     slug = models.SlugField(max_length=300)
+    abstract = models.TextField(null=True)
+    description = models.TextField()
     author = models.ForeignKey(Author)
     is_published = models.BooleanField(default=False, help_text='Only Published Entries will appear in the blog')
     published_date = models.DateTimeField(blank=True, null=True)
@@ -36,3 +38,10 @@ class BlogEntry(BaseModel):
 
     def __unicode__(self):
         return self.title
+
+class Category(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+    slug = models.SlugField()
+
+    def __unicode__(self):
+        return self.name
