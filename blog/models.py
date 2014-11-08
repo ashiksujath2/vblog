@@ -10,6 +10,11 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
+class Blog(models.Model):
+    """ Blog wide settings """
+    title = models.CharField(max_length=300, help_text='Title of the Blog')
+
+
 class Author(BaseModel):
     user = models.ForeignKey(User)
     about = models.TextField(blank=True)
