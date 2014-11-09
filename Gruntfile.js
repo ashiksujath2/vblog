@@ -8,8 +8,8 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'assets/css/foundation.css': 'bower_components/foundation/scss/foundation.scss',
-                    'assets/css/normalize.css': 'bower_components/foundation/scss/normalize.scss',
+                    // 'assets/css/foundation.css': 'bower_components/foundation/scss/foundation.scss',
+                    // 'assets/css/normalize.css': 'bower_components/foundation/scss/normalize.scss',
                     'assets/css/styles.css': 'assets/scss/main.scss',
                 }
             }

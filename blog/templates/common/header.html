@@ -1,0 +1,8 @@
+<div class="blog_title">
+    {{ blog.title }}
+</div>
+<div class="category row">
+    {% for category in categories %}
+        <div class="medium-1 coloumns">{{ category.name }}</div>
+    {% endfor %}
+</div>

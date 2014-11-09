@@ -1,9 +1,13 @@
 $font-stack:    Helvetica, sans-serif;
 $main-bg-color: #413D3E;
 $body-bg-color: #FFF;
+$blog-head-bg: #BB5758;
+$category-bg: #76BFA1;
+$font-color: #FFF;
 
 body {
   font: 100% $font-stack;
+  color: $font-color;
   background-color: $body-bg-color;
 }
 
@@ -16,4 +20,15 @@ body {
 
 #header {
     height: 200px;
+    padding-top: 70px;
+    .blog_title {
+        width: 100%;
+        font-size: 42px;
+        padding: 20px;
+        background-color: $blog-head-bg;
+    }
+    .category {
+        height: 30px;
+        background-color: $category-bg;
+    }
 }
