@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{% block title %} {{ blog.title }} {% endblock %}</title>
-    <link href="" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -24,7 +24,9 @@
 
         <!-- CONTENT BLOCK STARTS HERE -->
         <div id="content_block">
+            {% block content %}
             Contennt
+            {% endblock %}
         </div>
         <!--  CONTENT BLOCK STARTS HERE -->
 

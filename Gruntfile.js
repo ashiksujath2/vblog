@@ -2,16 +2,13 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        saas: {
-            options: {
-                includePaths: ['bower_components/foundation/scss']
-            },
+        sass: {
             dist: {
-                options {
-                    outputStyle: 'compressed'
+                options: {                       // Target options
+                    style: 'compressed'
                 },
                 files: {
-                    'blog/static/css/main.css': 'assets/scss/main.scss',
+                    'blog/static/css/styles.css': 'assets/scss/main.scss',
                 }
             }
         },
@@ -28,7 +25,7 @@ module.exports = function(grunt) {
             grunt: { files: ['Gruntfile.js'] },
 
             sass: {
-                files: 'scss/*.scss',
+                files: ['scss/**/*.scss'],
                 tasks: ['sass']
             },
 
@@ -41,8 +38,10 @@ module.exports = function(grunt) {
 
     });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['uglify', 'watch']);
+    grunt.registerTask('build', ['sass', 'uglify']);
+    grunt.registerTask('default', ['build', 'watch']);
 }
