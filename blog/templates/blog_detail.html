@@ -3,4 +3,15 @@
 
 {% block content %}
 
+<div class="article_heading">
+    {{ article.title }}
+</div>
+<div class="clearfix"></div>
+{% if article.abstract %}
+    <div class="abstract text-justify"> {{ article.abstract }} </div>
+{% endif %}
+
+<div class="description text-justify"> {{ article.description }} </div>
+
+
 {% endblock %}

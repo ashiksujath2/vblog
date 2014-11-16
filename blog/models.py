@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+
 
 class BaseModel(models.Model):
     """Things which we always need to keep track of."""
@@ -16,6 +16,8 @@ class Blog(models.Model):
 
 
 class Author(BaseModel):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     user = models.ForeignKey(User)
     about = models.TextField(blank=True)
 
@@ -25,21 +27,21 @@ class Author(BaseModel):
         verbose_name_plural = 'Authors'
 
     def __unicode__(self):
-        return self.user.get_full_name()
+        return "{} {}".format(self.first_name, self.last_name)
 
 
-class BlogEntry(BaseModel):
-    title = models.CharField(max_length=300, help_text='Title of the article')
+class Article(BaseModel):
+    title = models.CharField(max_length=300, help_text='Title of the article', unique=True)
     slug = models.SlugField(max_length=300)
     abstract = models.TextField(null=True)
     description = models.TextField()
     author = models.ForeignKey(Author)
-    is_published = models.BooleanField(default=False, help_text='Only Published Entries will appear in the blog')
+    is_published = models.BooleanField(default=False, help_text='Only Published Articles will appear in the blog')
     published_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         ordering = ['-created_on']
-        verbose_name_plural = 'Blog Entries'
+        verbose_name_plural = 'Articles'
 
     def __unicode__(self):
         return self.title
