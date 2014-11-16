@@ -1,8 +1,11 @@
 <div class="blog_title">
     {{ blog.title }}
 </div>
-<div class="category row">
+
+<dl class="category sub-nav">
     {% for category in categories %}
-        <div class="medium-1 coloumns">{{ category.name }}</div>
+    <dd class="{% if forloop.first %}active{% endif %}">
+        <a href="#">{{ category.name }}</a>
+    </dd>
     {% endfor %}
-</div>
+</dl>

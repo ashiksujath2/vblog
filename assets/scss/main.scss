@@ -5,6 +5,10 @@ $blog-head-bg: #BB5758;
 $category-bg: #76BFA1;
 $font-color: #FFF;
 
+$header-wrapper-height: 200px;
+$content-wrapper-height: 500px;
+$footer-wrapper-height: 100px;
+
 body {
   font: 100% $font-stack;
   color: $font-color;
@@ -12,14 +16,14 @@ body {
 }
 
 #page_container {
-    min-height: 700px;
+    // min-height: 700px;
     width: 1000px;
     margin: auto;
     background-color: $main-bg-color;
 }
 
 #header {
-    height: 200px;
+    height: $header-wrapper-height;
     padding-top: 70px;
     .blog_title {
         width: 100%;
@@ -30,5 +34,23 @@ body {
     .category {
         height: 30px;
         background-color: $category-bg;
+        .coloumns {
+            height: 100%;
+            text-align: center;
+        }
+    }
+}
+
+#content_block {
+    min-height: $content-wrapper-height;
+}
+
+#footer {
+    height: $footer-wrapper-height;
+    .footer_text {
+        width: 100%;
+        font-size: 42px;
+        padding: 20px;
+        background-color: $blog-head-bg;
     }
 }
