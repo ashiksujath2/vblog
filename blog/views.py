@@ -1,13 +1,15 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from .models import Blog, Category, Article
 
-class BlogDetailView(TemplateView):
-    template_name = 'blog_detail.html'
+
+
+class ArticleDetailView(TemplateView):
+    template_name = 'article_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = super(BlogDetailView, self).get_context_data(**kwargs)
+        context = super(ArticleDetailView, self).get_context_data(**kwargs)
         try:
             blog = Blog.objects.latest('id')
         except Blog.DoesNotExist:
@@ -16,3 +18,8 @@ class BlogDetailView(TemplateView):
         context['categories'] = Category.objects.all()
         context['article'] = Article.objects.latest('id')
         return context
+
+class ArticleListView(ListView):
+    template_name = 'article_list.html'
+    queryset = Article.objects.all()
+    context_object_name = 'article_list'

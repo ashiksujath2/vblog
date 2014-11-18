@@ -1,10 +1,12 @@
+{% load blog_tags %}
+
 <div class="blog_title">
     {{ blog.title }}
 </div>
 
 <dl class="category sub-nav">
     {% for category in categories %}
-    <dd class="{% if forloop.first %}active{% endif %}">
+    <dd class="{% active category.get_url %}">
         <a href="#">{{ category.name }}</a>
     </dd>
     {% endfor %}
