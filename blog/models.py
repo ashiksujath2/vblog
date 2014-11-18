@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,6 +11,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
 
 class Blog(models.Model):
     """ Blog wide settings """
@@ -41,6 +44,25 @@ class Category(models.Model):
         return self.slug
 
 
+class ArticleManager(models.Manager):
+
+    def get_published_articles(self):
+        return self.filter(is_published=True, published_date__lte=datetime.now())
+
+    def get_category_articles(self, category):
+        if not category:
+            return []
+        return self.get_published_articles().filter(category__slug=category)
+
+    def get_article_by_category(self, category, article):
+        if not (category and article):
+            return []
+        try:
+            return self.get_category_articles(category).get(slug=article)
+        except Article.DoesNotExist:
+            return []
+
+
 class Article(BaseModel):
     title = models.CharField(max_length=300, help_text='Title of the article', unique=True)
     slug = models.SlugField(max_length=300)
@@ -50,6 +72,8 @@ class Article(BaseModel):
     category = models.ForeignKey(Category)
     is_published = models.BooleanField(default=False, help_text='Only Published Articles will appear in the blog')
     published_date = models.DateTimeField(blank=True, null=True)
+
+    objects = ArticleManager()
 
     class Meta:
         ordering = ['-created_on']
