@@ -10,3 +10,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'vblog.db'),
     }
 }
+
+INSTALLED_APPS += (
+    'django_extensions',
+    # 'debug_toolbar',
+)

@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 
 class BaseModel(models.Model):
@@ -81,5 +82,12 @@ class Article(BaseModel):
 
     def __unicode__(self):
         return self.title
+
+    def get_url(self):
+        k = {
+            'category_slug': self.category.slug,
+            'article_slug': self.slug
+        }
+        return reverse('article_detail', kwargs=k)
 
 

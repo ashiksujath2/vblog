@@ -4,7 +4,7 @@
 {% block content %}
 
 {% for article in article_list %}
-    <div>{{article.title}}</div>
+    <div><a href="{{ article.get_url }}">{{article.title}}</a></div>
 {% endfor%}
 
 
