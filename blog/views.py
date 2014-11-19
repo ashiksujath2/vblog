@@ -32,7 +32,6 @@ class ArticleDetailView(BaseMixin, TemplateView):
             raise Http404
         return context
 
-class ArticleListView(BaseMixin, ListView):
+class ArticleListView(BaseMixin, TemplateView):
     template_name = 'article_list.html'
-    queryset = Article.objects.get_published_articles()
-    context_object_name = 'article_list'
+

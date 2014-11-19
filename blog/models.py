@@ -47,13 +47,19 @@ class Category(models.Model):
 
 class ArticleManager(models.Manager):
 
-    def get_published_articles(self):
-        return self.filter(is_published=True, published_date__lte=datetime.now())
+    def get_published_articles(self, limit=None):
+        q = self.filter(is_published=True, published_date__lte=datetime.now()).order_by('published_date')
+        if limit:
+            return q[:int(limit)]
+        return q
 
-    def get_category_articles(self, category):
+    def get_category_articles(self, category, limit=None):
         if not category:
             return []
-        return self.get_published_articles().filter(category__slug=category)
+        q = self.get_published_articles().filter(category__slug=category).order_by('published_date')
+        if limit:
+            return q[:int(limit)]
+        return q
 
     def get_article_by_category(self, category, article):
         if not (category and article):

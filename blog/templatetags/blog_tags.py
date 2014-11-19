@@ -4,6 +4,8 @@ from django.core.urlresolvers import reverse, NoReverseMatch
 
 register = template.Library()
 
+from blog.models import Article
+
 
 @register.simple_tag(takes_context=True)
 def active(context, pattern_or_urlname):
@@ -15,3 +17,9 @@ def active(context, pattern_or_urlname):
     if re.search(pattern, path):
         return 'active'
     return ''
+
+@register.inclusion_tag('inclusion/article_box.html')
+def article_box(category=None, limit=5):
+    return {
+        'articles': Article.objects.get_published_articles(limit=limit)
+    }
