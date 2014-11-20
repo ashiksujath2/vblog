@@ -1,9 +1,12 @@
 {% for article in articles %}
-    <div>
-        <a href="{{ article.get_url }}">{{article.title}}</a>
-        <p> {{ article.description }}
+    <div class="row">
+        <h2 class="small-12 coloumns"><a href="{{ article.get_url }}">{{article.title}}</a></h2>
+        <p class="medium-12 coloumns"> {{ article.description }}
             <a href="{{ article.get_url }}">READ MORE...</a>
         </p>
-        <div>{{ article.published_date }}</div>
+        <div class="small-10 coloumns">
+            <h4 class="right"><small>Author: {{ article.get_author }}</small></h4>
+            <h4 class="left"><small>Date: {{ article.published_date }}</small></h4>
+        </div>
     </div>
 {% endfor%}

@@ -89,6 +89,10 @@ class Article(BaseModel):
     def __unicode__(self):
         return self.title
 
+    @property
+    def get_author(self):
+        return self.author
+
     def get_url(self):
         return reverse('article_detail', args=[self.category.slug, self.slug])
 
