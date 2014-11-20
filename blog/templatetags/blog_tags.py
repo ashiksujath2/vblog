@@ -20,6 +20,10 @@ def active(context, pattern_or_urlname):
 
 @register.inclusion_tag('inclusion/article_box.html')
 def article_box(category=None, limit=5):
-    return {
-        'articles': Article.objects.get_published_articles(limit=limit)
-    }
+    context = {}
+    if category:
+        context['articles'] = Article.objects.get_category_articles(category, limit=limit)
+    else:
+        context['articles'] = Article.objects.get_published_articles(limit=limit)
+    return context
+

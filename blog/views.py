@@ -35,3 +35,15 @@ class ArticleDetailView(BaseMixin, TemplateView):
 class ArticleListView(BaseMixin, TemplateView):
     template_name = 'article_list.html'
 
+class CategoryView(BaseMixin, TemplateView):
+    template_name = 'article_list.html'
+
+    def get_context_data(self, **kwargs):
+        category_slug = kwargs.get('category_slug', '')
+        context = super(CategoryView, self).get_context_data(**kwargs)
+        try:
+            context['category'] = Category.objects.get(slug=category_slug)
+        except Category.DoesNotExist:
+            raise Http404
+        return context
+

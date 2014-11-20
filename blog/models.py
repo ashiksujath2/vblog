@@ -42,7 +42,7 @@ class Category(models.Model):
         return self.name
 
     def get_url(self):
-        return self.slug
+        return reverse('category_view', args=[self.slug])
 
 
 class ArticleManager(models.Manager):
@@ -90,10 +90,6 @@ class Article(BaseModel):
         return self.title
 
     def get_url(self):
-        k = {
-            'category_slug': self.category.slug,
-            'article_slug': self.slug
-        }
-        return reverse('article_detail', kwargs=k)
+        return reverse('article_detail', args=[self.category.slug, self.slug])
 
 

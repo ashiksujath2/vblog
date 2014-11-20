@@ -3,7 +3,10 @@
 
 {% block content %}
 
-{% article_box %}
-
+{% if category %}
+    {% article_box category.slug %}
+{% else %}
+    {% article_box %}
+{% endif %}
 
 {% endblock %}
