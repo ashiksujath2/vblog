@@ -1,5 +1,4 @@
-Django==1.6.8
-South==1.0.1
+-r requirements/base.txt
 argparse==1.2.1
 dj-database-url==0.3.0
 dj-static==0.0.6
