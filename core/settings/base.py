@@ -42,6 +42,10 @@ INSTALLED_APPS = (
     'blog'
 )
 
+TEMPLATE_DIRS = (
+    fillpath('blog/templates')
+)
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -98,5 +102,3 @@ STATICFILES_FINDERS = (
     # 'compressor.finders.CompressorFinder',
 
 )
-
-print "\n\nBASE_DIR -- ", BASE_DIR
