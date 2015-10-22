@@ -16,11 +16,11 @@ class BaseModel(models.Model):
 
 class Blog(models.Model):
     """ Blog wide settings """
-    title = models.CharField(max_length=300, help_text='Title of the Blog')
+    title = models.CharField(max_length=200, help_text='Title of the Blog')
     logo = models.ImageField(null=True, help_text='Site Logo')
-    home_poster = models.ImageField(help_text='Poster image for homepage')
-    contact_poster = models.ImageField(null=True, help_text='Poster image for contact page')
-    about_poster = models.ImageField(null=True, help_text='Poster image for about page')
+    home_bgcolor = models.CharField(max_length=20, help_text='Background Color for homepage')
+    contact_bgcolor = models.CharField(max_length=20, blank=True, help_text='Background Color for contact page')
+    about_bgcolor = models.CharField(max_length=20, blank=True, help_text='Background Color for about page')
 
 
 class Author(BaseModel):
@@ -39,7 +39,7 @@ class Author(BaseModel):
 
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
-    image = models.ImageField(null=True)
+    bg_color = models.CharField(max_length=20, blank=True)
     slug = models.SlugField()
 
     def __unicode__(self):
@@ -75,8 +75,8 @@ class ArticleManager(models.Manager):
 
 
 class Article(BaseModel):
-    title = models.CharField(max_length=300, help_text='Title of the article', unique=True)
-    slug = models.SlugField(max_length=300, unique=True)
+    title = models.CharField(max_length=200, help_text='Title of the article', unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
     abstract = models.TextField(null=True)
     description = models.TextField()
     author = models.ForeignKey(Author)
