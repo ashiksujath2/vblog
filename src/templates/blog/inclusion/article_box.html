@@ -1,0 +1,14 @@
+{% for article in articles %}
+    <div class="post-preview">
+        <a href="{{ article.get_url }}">
+            <h2 class="post-title">
+                {{article.title}}
+            </h2>
+            <h3 class="post-subtitle">
+                {{ article.abstract }}
+            </h3>
+        </a>
+        <p class="post-meta">Posted by <a href="#">{{ article.get_author }}</a> {{ article.published_date }} | Tags <a href="#">Embedded</a></p>
+    </div>
+    <hr>
+{% endfor%}

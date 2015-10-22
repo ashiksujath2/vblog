@@ -33,7 +33,7 @@ class Author(BaseModel):
         verbose_name = 'Author'
         verbose_name_plural = 'Authors'
 
-    def __unicode__(self):
+    def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)
 
 
@@ -42,7 +42,7 @@ class Category(models.Model):
     bg_color = models.CharField(max_length=20, blank=True)
     slug = models.SlugField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def get_url(self):
@@ -90,7 +90,7 @@ class Article(BaseModel):
         ordering = ['-created_on']
         verbose_name_plural = 'Articles'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     @property

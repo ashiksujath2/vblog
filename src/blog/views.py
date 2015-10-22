@@ -1,13 +1,5 @@
-# from django.shortcuts import render
-from django.views.generic import TemplateView
-
-
-class HomeView(TemplateView):
-    template_name =
-
-
 from django.http import Http404
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView
 
 from .models import Blog, Category, Article
 
@@ -28,7 +20,7 @@ class BaseMixin(object):
         return context
 
 
-class ArticleListView(BaseMixin, TemplateView):
+class HomeView(BaseMixin, TemplateView):
     template_name = 'blog/home.html'
 
 
