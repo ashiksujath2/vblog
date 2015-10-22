@@ -4,3 +4,5 @@ node_modules*
 bower_components*
 .bowerrc
 .sass-cache*
+*__pycache__*
+src_old*

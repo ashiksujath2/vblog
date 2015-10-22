@@ -1,0 +1,25 @@
+{
+  "name": "vBlog",
+  "homepage": "https://github.com/ashiksujath2/vblog",
+  "authors": [
+    "Ashik Sujath <ashiksujath2@gmail.com>"
+  ],
+  "description": "purely binary blog",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "blog"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
