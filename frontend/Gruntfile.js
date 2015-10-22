@@ -13,6 +13,18 @@ module.exports = function(grunt) {
             }
         },
 
+        less: {
+            dist: {
+                options: {
+
+                },
+                files: {
+                    'css/bootstrap.css': 'bower_components/bootstrap/less/bootstrap.less',
+                    'css/main.css': 'less/main.less',
+                }
+            }
+        },
+
         cssmin: {
           combine: {
             files: {
@@ -24,7 +36,10 @@ module.exports = function(grunt) {
         uglify: {
             my_target: {
                 files: {
-                  '../src/assets/js/libs.min.js': ['bower_components/jquery/dist/jquery.js'],
+                  '../src/assets/js/libs.min.js': [
+                    'bower_components/jquery/dist/jquery.js',
+                    'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'js/clean-blog.js'],
                 }
             }
         },
@@ -32,9 +47,14 @@ module.exports = function(grunt) {
         watch: {
             grunt: { files: ['Gruntfile.js'] },
 
-            sass: {
-                files: ['scss/*.scss'],
-                tasks: ['sass']
+            // sass: {
+            //     files: ['scss/*.scss'],
+            //     tasks: ['sass']
+            // },
+
+            less: {
+                files: ['less/*.less'],
+                tasks: ['less']
             },
 
             uglify: {
@@ -52,10 +72,14 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('build', ['sass', 'uglify', 'cssmin']);
+    grunt.registerTask('build', ['less', 'uglify', 'cssmin']);
     grunt.registerTask('default', ['build', 'watch']);
 };
+
+
+
