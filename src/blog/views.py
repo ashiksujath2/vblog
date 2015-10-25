@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.views.generic import TemplateView
 
-from .models import Blog, Category, Article
+from .models import Blog, Category, Article, Author
 
 
 class BaseMixin(object):
@@ -81,4 +81,33 @@ class CategoryView(BaseMixin, TemplateView):
             raise Http404
         context['category'] = _category
         context.update(self.get_category_meta(_category))
+        return context
+
+
+class AboutView(BaseMixin, TemplateView):
+    template_name = 'blog/about.html'
+
+    def get_context_data(self, **kwargs):
+        try:
+            author = Author.objects.latest('id')
+        except Author.DoesNotExist:
+            raise Http404
+        context = super(AboutView, self).get_context_data(**kwargs)
+        context['author'] = author
+        context['heading'] = "About Me"
+        if context['blog'].about_bgcolor:
+            context['header_bg_color'] = context['blog'].about_bgcolor
+        context['sub_heading'] = "This is what I do"
+        return context
+
+
+class ContactView(BaseMixin, TemplateView):
+    template_name = 'blog/contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ContactView, self).get_context_data(**kwargs)
+        context['heading'] = "Contact Me"
+        if context['blog'].contact_bgcolor:
+            context['header_bg_color'] = context['blog'].contact_bgcolor
+        context['sub_heading'] = "Have questions? I have answers (maybe)."
         return context

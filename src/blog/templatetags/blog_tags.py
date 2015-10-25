@@ -15,7 +15,7 @@ def active(context, pattern_or_urlname):
         pattern = pattern_or_urlname
     path = context['request'].path
     if re.search(pattern, path):
-        return 'active'
+        return 'highlight'
     return ''
 
 

@@ -22,6 +22,12 @@
                     <a href="{{ category.get_url }}">{{ category.name }}</a>
                 </li>
                 {% endfor %}
+                <li class="{% active 'about' %}">
+                    <a href="{% url 'about' %}">About</a>
+                </li>
+                <li class="{% active 'contact' %}">
+                    <a href="{% url 'contact' %}">Contact</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
