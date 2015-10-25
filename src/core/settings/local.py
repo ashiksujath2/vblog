@@ -10,7 +10,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS += (
     'django_extensions',
-    # 'debug_toolbar',
+    'debug_toolbar',
 )
 
 DATABASES = {

@@ -35,14 +35,15 @@
 
 <body>
 
-    {% include "blog/header.html" %}
+    {% include "blog/common/nav.html" %}
+    {% include "blog/common/header.html" %}
 
     <!-- Main Content -->
     {% block content %}
     {% endblock %}
     <hr>
 
-    {% include "blog/footer.html" %}
+    {% include "blog/common/footer.html" %}
     <script type="text/javascript" src="{% static 'js/libs.min.js' %}"></script>
 
 

@@ -25,7 +25,7 @@ class HomeView(BaseMixin, TemplateView):
 
 
 class ArticleDetailView(BaseMixin, TemplateView):
-    template_name = 'article_detail.html'
+    template_name = 'blog/detail.html'
 
     def get_context_data(self, **kwargs):
         category = kwargs.get('category_slug', '')
@@ -38,7 +38,7 @@ class ArticleDetailView(BaseMixin, TemplateView):
 
 
 class CategoryView(BaseMixin, TemplateView):
-    template_name = 'article_list.html'
+    template_name = 'blog/home.html'
 
     def get_context_data(self, **kwargs):
         category_slug = kwargs.get('category_slug', '')
