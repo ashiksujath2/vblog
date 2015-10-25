@@ -8,7 +8,7 @@
                 {{ article.abstract }}
             </h3>
         </a>
-        <p class="post-meta">Posted by <a href="#">{{ article.get_author }}</a> {{ article.published_date }} | Tags <a href="#">Embedded</a></p>
+        <p class="post-meta">Posted by <a href="#">{{ article.get_author }}</a> {{ article.published_date|date:"F d, Y" }}</a></p>
     </div>
     <hr>
 {% endfor%}

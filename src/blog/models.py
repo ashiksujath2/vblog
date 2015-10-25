@@ -17,10 +17,18 @@ class BaseModel(models.Model):
 class Blog(models.Model):
     """ Blog wide settings """
     title = models.CharField(max_length=200, help_text='Title of the Blog')
-    logo = models.ImageField(null=True, help_text='Site Logo')
+    sub_heading = models.CharField(max_length=50, blank=True, help_text='Sub Heading of the Blog')
+    logo = models.ImageField(null=True, blank=True, help_text='Site Logo')
     home_bgcolor = models.CharField(max_length=20, help_text='Background Color for homepage')
     contact_bgcolor = models.CharField(max_length=20, blank=True, help_text='Background Color for contact page')
     about_bgcolor = models.CharField(max_length=20, blank=True, help_text='Background Color for about page')
+
+    class Meta:
+        verbose_name = 'Purely Binary'
+        verbose_name_plural = 'Purely Binary'
+
+    def __str__(self):
+        return self.title
 
 
 class Author(BaseModel):
@@ -39,6 +47,7 @@ class Author(BaseModel):
 
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
+    sub_heading = models.CharField(max_length=50, blank=True)
     bg_color = models.CharField(max_length=20, blank=True)
     slug = models.SlugField()
 
