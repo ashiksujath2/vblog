@@ -14,9 +14,16 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 from unipath import Path
-
+from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = Path(__file__).ancestor(3)
 
+
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set %s environment variable" % (var_name,)
+        raise ImproperlyConfigured(error_msg)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
