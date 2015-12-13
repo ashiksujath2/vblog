@@ -47,6 +47,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'tinymce',
+    'django_wysiwyg',
+
     'blog'
 )
 
@@ -118,3 +121,6 @@ MEDIA_ROOT = BASE_DIR.child('media')
 STATICFILES_DIRS = (
     BASE_DIR.child('assets'),
 )
+
+DJANGO_WYSIWYG_FLAVOR = "tinymce_advanced"
+# DJANGO_WYSIWYG_MEDIA_URL

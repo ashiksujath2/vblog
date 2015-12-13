@@ -11,6 +11,7 @@ class BlogAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
+    change_form_template = 'blog/admin/change_form.html'
     prepopulated_fields = {"slug": ("title",)}
 
 
