@@ -50,8 +50,10 @@ class ArticleDetailView(BaseMixin, TemplateView):
         if not article:
             raise Http404
         _category = Category.objects.get(slug=category_slug)
-        context['article'] = article
         context.update(self.get_category_meta(_category))
+        context['article'] = article
+        context['heading'] = article.title
+        context['detail'] = True
         meta = 'Posted by <a href="#">{}</a> on {}'.format(
             article.author,
             article.published_date.strftime("%B %d, %Y") if article.published_date else article.published_date

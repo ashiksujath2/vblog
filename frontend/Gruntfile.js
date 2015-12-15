@@ -28,7 +28,10 @@ module.exports = function(grunt) {
         cssmin: {
           combine: {
             files: {
-              '../src/assets/css/styles.min.css': ['css/*.css']
+              '../src/assets/css/styles.min.css': [
+                'css/*.css',
+                'bower_components/google-code-prettify/bin/prettify.min.css'
+                ]
             }
           }
         },
@@ -39,6 +42,7 @@ module.exports = function(grunt) {
                   '../src/assets/js/libs.min.js': [
                     'bower_components/jquery/dist/jquery.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'bower_components/google-code-prettify/bin/prettify.min.js',
                     'js/clean-blog.js'],
                 }
             }

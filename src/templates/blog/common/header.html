@@ -4,14 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
+                <div class="{% if detail %}post-heading{% else %}site-heading{% endif %}">
                     <h1>{{heading}}</h1>
-                    <hr class="small">
+                    {% if not detail %}<hr class="small">{% endif %}
                     {% if sub_heading %}
-                    <span class="subheading">{{sub_heading}}</span>
+                        <span class="subheading">{{sub_heading}}</span>
                     {% endif %}
                     {% if meta %}
-                    <span class="meta">{{meta|safe}}</span>
+                        <span class="meta">{{meta|safe}}</span>
                     {% endif %}
                 </div>
             </div>
