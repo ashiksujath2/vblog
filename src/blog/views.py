@@ -54,7 +54,7 @@ class ArticleDetailView(BaseMixin, TemplateView):
         context['article'] = article
         context['heading'] = article.title
         context['detail'] = True
-        meta = 'Posted by <a href="#">{}</a> on {}'.format(
+        meta = 'Posted by: <a href="#">{}</a> on {}'.format(
             article.author,
             article.published_date.strftime("%B %d, %Y") if article.published_date else article.published_date
         )
